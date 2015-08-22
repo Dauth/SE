@@ -1,4 +1,4 @@
 
-public class AlphabeticShift {
+public class AlphabeticSort {
 
 }
