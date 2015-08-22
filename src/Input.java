@@ -1,5 +1,6 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Scanner;
 
 
 public class Input {
@@ -7,10 +8,10 @@ public class Input {
 	private static Input mInput = null;
 	
 	public Input(){
-		storage = Storage.getInstance();
+		this.storage = Storage.getInstance();
 	}
 	
-	public Input getInstance(){
+	public static Input getInstance(){
 		if (mInput == null){
 			mInput = new Input();
 		}
@@ -21,5 +22,7 @@ public class Input {
 		storage.loadInputFile(inputLoc, "input");
 		storage.loadInputFile(ignoreLoc, "ignore");
 	}
+	
+	
 	
 }
