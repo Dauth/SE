@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class Storage {
 	private ArrayList<String> inputData;
 	private ArrayList<String> ignoreList;
+	private static final Storage mStorage = new Storage();
 	
 	public Storage(){
 		this.inputData = new ArrayList<String>();
@@ -28,6 +29,10 @@ public class Storage {
 	
 	public String getLineAtPos(ArrayList<String> al, int posNo){
 		return al.get(posNo);
+	}
+	
+	public static Storage getInstance(){ 
+		return mStorage;
 	}
 	
 	public void loadInputFile(String inputFileLocation) throws FileNotFoundException, IOException{
