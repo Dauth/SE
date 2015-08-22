@@ -4,7 +4,7 @@ import java.util.Vector;
 
 public class CircularShift {
 	Storage storage;
-	private static final CircularShift mcircularShift = new CircularShift();
+	private static CircularShift mCircularShift = null;
 	private ArrayList<String> shiftedLlineList;
 	
 	public CircularShift(){
@@ -22,11 +22,14 @@ public class CircularShift {
 	}
 	
 	public static CircularShift getInstance(){ 
-		return mcircularShift;
+		if(mCircularShift == null){
+			mCircularShift = new CircularShift();
+		}
+		return mCircularShift;
 	}
 	
 	public ArrayList<String> getShiftedList(){
-		return mcircularShift.shiftedLlineList;
+		return mCircularShift.shiftedLlineList;
 	}
 	
 	private ArrayList<String> shiftLineInList(String extractedLine){

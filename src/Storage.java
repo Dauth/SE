@@ -4,15 +4,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/*
- * 
- * 
- * 
- */
 public class Storage {
 	private ArrayList<String> inputData;
 	private ArrayList<String> ignoreList;
-	private static final Storage mStorage = new Storage();
+	private static Storage mStorage = new Storage();
 	
 	public Storage(){
 		this.inputData = new ArrayList<String>();
@@ -36,6 +31,9 @@ public class Storage {
 	}
 	
 	public static Storage getInstance(){ 
+		if(mStorage == null){
+			mStorage = new Storage();
+		}
 		return mStorage;
 	}
 	
