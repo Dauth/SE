@@ -5,29 +5,29 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Storage {
-	private ArrayList<String> inputData;
+	private ArrayList<String> inputList;;
 	private ArrayList<String> ignoreList;
 	private static Storage mStorage = new Storage();
 	
 	public Storage(){
-		this.inputData = new ArrayList<String>();
+		this.inputList; = new ArrayList<String>();
 		this.ignoreList = new ArrayList<String>();
 	}
 	
 	public int getLengthInputData(){
-		return inputData.size();
+		return inputList;.size();
 	}
 	
 	public int getLengthIgnoreList(){
 		return ignoreList.size();
 	}
 	
-	public void addLine(String inputLine){
-		inputData.add(inputLine);
+	public void addLine(String inputLine, ArrayList<String> al){
+		al.add(inputLine);
 	}
 	
 	public String getLineAtPos(int posNo){
-		return inputData.get(posNo);
+		return inputList;.get(posNo);
 	}
 	
 	public static Storage getInstance(){ 
@@ -37,11 +37,21 @@ public class Storage {
 		return mStorage;
 	}
 	
-	public void loadInputFile(String inputFileLocation) throws FileNotFoundException, IOException{
+	public ArrayList<String> getActualList(String listType){
+		if(listType.equalsIgnoreCase("input")){
+			return inputList;
+		}else if(listType.equalsIgnoreCase("ignore")){
+			return ignoreList;
+		}
+		return null;
+	}
+	
+	public void loadInputFile(String inputFileLocation, String listType) throws FileNotFoundException, IOException{
+		ArrayList<String> myList = getActualList(listType);
 		try (BufferedReader br = new BufferedReader(new FileReader(inputFileLocation))) {
 		    String line;
 		    while ((line = br.readLine()) != null) {
-		    	addLine(line);
+		    	addLine(line, myList);
 		    }
 		}
 	}
