@@ -49,9 +49,14 @@ public class CircularShift {
 				sb.append(arr[i]);
 			}
 		}
-		return sb.toString();
+		String outputString = sb.toString();
+		outputString = capitalizeFirstWord(outputString);
+		return outputString;
 	}
 	
+	private String capitalizeFirstWord(String line){
+		return line.substring(0, 1).toUpperCase() + line.substring(1);
+	}
 	private String[] tokenizeLine(String line){
 		String[] delimitedArray = line.split("\\s+");
 		return delimitedArray;
