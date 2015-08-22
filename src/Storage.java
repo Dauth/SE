@@ -19,16 +19,20 @@ public class Storage {
 		this.ignoreList = new ArrayList<String>();
 	}
 	
-	public int getLength(ArrayList<String> al){
-		return al.size();
+	public int getLengthInputData(){
+		return inputData.size();
 	}
 	
-	public void addLine(ArrayList<String> al,String inputLine){
-		al.add(inputLine);
+	public int getLengthIgnoreList(){
+		return ignoreList.size();
 	}
 	
-	public String getLineAtPos(ArrayList<String> al, int posNo){
-		return al.get(posNo);
+	public void addLine(String inputLine){
+		inputData.add(inputLine);
+	}
+	
+	public String getLineAtPos(int posNo){
+		return inputData.get(posNo);
 	}
 	
 	public static Storage getInstance(){ 
@@ -39,7 +43,7 @@ public class Storage {
 		try (BufferedReader br = new BufferedReader(new FileReader(inputFileLocation))) {
 		    String line;
 		    while ((line = br.readLine()) != null) {
-		    	addLine(inputData, line);
+		    	addLine(line);
 		    }
 		}
 	}
