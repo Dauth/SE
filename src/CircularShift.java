@@ -1,4 +1,55 @@
+import java.util.ArrayList;
+import java.util.Vector;
+
 
 public class CircularShift {
-
+	Storage storage;
+	private ArrayList<String> shiftedLlineList;
+	
+	
+	public void setup(){
+		storage = Storage.getInstance();
+		int inputListLength = storage.getLengthInputData();
+		shiftedLlineList = new ArrayList<String>();
+		for (int i = 0; i < inputListLength; i++) {
+			String line = storage.getLineAtPos(i);
+			shiftedLlineList.addAll(shiftLineInList(line));
+		}
+	}
+	
+	private ArrayList<String> shiftLineInList(String extractedLine){
+		String[] spaceDelimitedArray = tokenizeLine(extractedLine);
+		ArrayList<String> completedList = new ArrayList<String>();
+		for (int i = 0; i < spaceDelimitedArray.length; i++) {
+			String firstWord = spaceDelimitedArray[i];
+			if(storage.isIgnoredWordPresent(firstWord)){
+				continue;
+			}else{
+				completedList.add(joinLine(i, spaceDelimitedArray));
+			}
+		}
+		return completedList;
+	}
+	
+	private String joinLine(int posNo, String[] arr){
+		StringBuffer sb = null;
+		for (int i = posNo; i < arr.length; i++) {
+			sb.append(arr[i]);
+		}
+		if(posNo != 0){
+			for (int i = 0; i < posNo; i++) {
+				sb.append(arr[i]);
+			}
+		}
+		return sb.toString();
+	}
+	
+	private String[] tokenizeLine(String line){
+		String[] delimitedArray = line.split("\\s+");
+		return delimitedArray;
+	}
+	
+	public ArrayList<String> getCompletedShiftList(){
+		return shiftedLlineList;
+	}
 }
