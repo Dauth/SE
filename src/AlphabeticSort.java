@@ -8,8 +8,12 @@ public class AlphabeticSort {
 	private ArrayList<String> sortedList = new ArrayList<String>();
 
 	public AlphabeticSort(){
-		circularShift = CircularShift.getInstance();
+		this.circularShift = CircularShift.getInstance();
+	}
+	
+	public void execute(){
 		this.sortedList = circularShift.getShiftedList();
+		sort();
 	}
 
 	public static AlphabeticSort getInstance(){ 

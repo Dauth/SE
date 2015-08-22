@@ -8,13 +8,12 @@ public class CircularShift {
 	private ArrayList<String> shiftedLlineList;
 	
 	public CircularShift(){
-		setup();
+		this.storage = Storage.getInstance();
+		this.shiftedLlineList = new ArrayList<String>();
 	}
 	
-	public void setup(){
-		this.storage = Storage.getInstance();
+	public void execute(){
 		int inputListLength = storage.getLengthInputData();
-		this.shiftedLlineList = new ArrayList<String>();
 		for (int i = 0; i < inputListLength; i++) {
 			String line = storage.getLineAtPos(i);
 			shiftedLlineList.addAll(shiftLineInList(line));
@@ -47,13 +46,15 @@ public class CircularShift {
 	}
 	
 	private String joinLine(int posNo, String[] arr){
-		StringBuffer sb = null;
+		StringBuffer sb = new StringBuffer();
 		for (int i = posNo; i < arr.length; i++) {
 			sb.append(arr[i]);
+			sb.append(" ");
 		}
 		if(posNo != 0){
 			for (int i = 0; i < posNo; i++) {
 				sb.append(arr[i]);
+				sb.append(" ");
 			}
 		}
 		String outputString = sb.toString();

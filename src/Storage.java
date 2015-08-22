@@ -10,12 +10,12 @@ public class Storage {
 	private static Storage mStorage = new Storage();
 	
 	public Storage(){
-		this.inputList; = new ArrayList<String>();
+		this.inputList = new ArrayList<String>();
 		this.ignoreList = new ArrayList<String>();
 	}
 	
 	public int getLengthInputData(){
-		return inputList;.size();
+		return inputList.size();
 	}
 	
 	public int getLengthIgnoreList(){
@@ -27,7 +27,7 @@ public class Storage {
 	}
 	
 	public String getLineAtPos(int posNo){
-		return inputList;.get(posNo);
+		return inputList.get(posNo);
 	}
 	
 	public static Storage getInstance(){ 

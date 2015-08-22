@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
@@ -19,8 +20,8 @@ public class Input {
 	}
 	
 	public void setup(String inputLoc, String ignoreLoc) throws FileNotFoundException, IOException{
-		storage.loadInputFile(inputLoc, "input");
-		storage.loadInputFile(ignoreLoc, "ignore");
+		storage.loadInputFile(System.getProperty("user.dir") + "\\" + inputLoc + ".txt", "input");
+		storage.loadInputFile(System.getProperty("user.dir") + "\\" + ignoreLoc + ".txt", "ignore");
 	}
 	
 	

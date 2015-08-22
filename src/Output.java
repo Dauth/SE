@@ -11,7 +11,7 @@ public class Output {
 		this.completeList = alphabeticSort.getSortedList();
 	}
 	
-	public Output getInstance(){
+	public static Output getInstance(){
 		if (mOutput == null){
 			mOutput = new Output();
 		}
