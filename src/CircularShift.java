@@ -25,6 +25,10 @@ public class CircularShift {
 		return mcircularShift;
 	}
 	
+	public ArrayList<String> getShiftedList(){
+		return mcircularShift.shiftedLlineList;
+	}
+	
 	private ArrayList<String> shiftLineInList(String extractedLine){
 		String[] spaceDelimitedArray = tokenizeLine(extractedLine);
 		ArrayList<String> completedList = new ArrayList<String>();
@@ -60,9 +64,5 @@ public class CircularShift {
 	private String[] tokenizeLine(String line){
 		String[] delimitedArray = line.split("\\s+");
 		return delimitedArray;
-	}
-	
-	public ArrayList<String> getCompletedShiftList(){
-		return shiftedLlineList;
 	}
 }
